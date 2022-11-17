@@ -1,0 +1,142 @@
+ESTRUCTURA DE DATOS: representación organizada de un conjunto de información, que permite representar de manera
+más natural el manejo de información. Ej: estructura de tipo Persona, dentro de la cuál definiríamos las variables
+que definen a la persona (nombre, apellido, DNI).
+Las ED implementan lo que se conoce como TAD (Un tipo de dato cuya representación como tipo concreto ha sido
+abstraída y a cuyos datos sólo se puede acceder a través de un conjunto de operaciones, como inserción, eliminación,
+búsqueda, vaciado, inicialización).
+Las ED pueden ser DINÁMICAS vs ESTÁTICAS, o LINEALES vs NO LINEALES.
+
+ED LINEALES: están relacionados un elemento con otro de manera lineal o contigua (en secuencia).
+    Listas - Pilas - Colas.
+ED NO LINEALES: cada elemento puede estar O NO enlazado con cualquier otro.
+    Grafos - Árboles.
+
+Un Tipo de dato abstracto es un conjunto de datos u objetos al cual se le asocian operaciones.
+El TAD provee de una interfaz con la cual es posible realizar las operaciones permitidas, abstrayéndose de la manera en
+cómo están implementadas dichas operaciones.
+Los objetos permiten encapsular valores, métodos y funciones que pueden ser usados por otras partes de un sistema
+mediante una clara definición o interfaz que define a los mismos.
+
+------------------------------------------------------------------------------------------------------------------------
+LISTAS
+    SIMPLES
+    DOBLEMENTE ENLAZADAS
+    CIRCULARES
+        SIMPLES
+        DOBLEMENTE ENLAZADAS
+PILAS
+COLAS
+
+- LISTAS SIMPLES ENLAZADAS.
+Cada nodo tiene un único campo de enlace. Una variable de referencia contiene una referencia al primer nodo, cada nodo
+(excepto el último) enlaza con el nodo siguiente, y el enlace del último nodo contiene NULL para indicar el final de la
+lista.
+
+- LISTAS DOBLEMENTE ENLAZADAS.
+Un tipo de lista enlazada de dos vías. Cada nodo tiene dos enlaces: uno apunta al nodo anterior, o apunta al valor NULL
+si es el primer nodo; y otro que apunta al nodo siguiente, o apunta al valor NULL si es el último nodo.
+
+- LISTAS CIRCULARES SIMPLES
+No tienen inicio ni fin. SI tienen un punto de partida, del cual se comienza a recorrer la lista. Entonces es,
+básicamente, una lista simplemente enlazada cuyo último nodo apunta al primero.
+
+- PILA o STACK
+Colección ordenada de elementos a los cuales sólo se puede acceder por un único lugar o tope de la pila. Los elementos
+se añaden o se quitan de la pila solo por su parte superior. Se pueden comparar con una pila de platos.
+Al decir "push" depositamos el primer elemento. Al decir "pop" retiramos el elemento.
+
+- COLAS O FILAS
+Almacena elementos en una lista. Es de tipo FIFO. Los elementos se insertan por el final, y se eliminan por el inicio.
+
+
+------------------------------------------------------------------------------------------------------------------------
+ESTRUCTURAS DE DATOS NO LINEALES
+
+ARBOLES
+    BINARIOS
+    MULTICAMINOS O N-ARIOS
+GRAFOS
+    DIRIGIDOS
+    NO DIRIGIDOS
+    CONEXOS
+    NO CONEXOS
+
+------------------------------------------------------------------------------------------------------------------------
+
+ARBOLES
+- Se utilizan para representar fórmulas algebraicas. Organizar objetos. Inteligencia Artificial. Algoritmos de Cifrado.
+Constan de:
+    Un conjunto finito de elementos, llamados "Nodos".
+    Un conjunto finito de lineas dirigidas, llamadas "Ramas".
+
+- Un nodo se considera "Padre" si tiene Nodos sucesores. Los "Hijos" del mismo "Padre" se llaman "Nodos Hermanos". Los
+nodos sin hijos se llaman "Hojas".
+- El nivel de un nodo es su distancia al nodo "Raíz". La raíz es nivel 0.
+- Camino: secuencia de nodos en la que cada nodo es adyacente al siguiente. Cada nodo del árbol puede ser alcanzado
+siguiendo un único camino que comienza en el nodo Raíz.
+- La altura o profundidad de un Árbol es el nivel de la hoja del camino mas largo desde la raíz + 1. Por definición, la
+altura de un árbol vacío es 0.
+
+******************
+- ARBOLES BINARIOS
+Arboles cuyos nodos no pueden tener mas de 2 nodos hijos. Se distinguen entre hijo izquierdo y derecho.
+Un árbol es una estructura recursiva. Cada nodo es la raíz de su propio subárbol y tiene hijos, que son raíces de
+árboles, llamados subárboles derecho e izquierdo del nodo, respectivamente.
+
+- Estrucura: Tiene sus respectivos punteros hijos izquierdo y derecho, y en medio el dato.
+
+- Recorrido inOrden:
+El arbol no debe estar vacío. Hay que realizar las siguientes operaciones RECURSIVAMENTE:
+    1. Recorrer el subárbol izquierdo inOrder.
+    2. Examinar la Raíz.
+    3. Recorrer el subárbol derecho inOrder.
+
+- Recorrido preOrder:
+El árbol no debe estar vacío. Hay que realizar las siguientes operaciones RECURSIVAMENTE:
+    1. Examina la raíz.
+    2. Recorre el subárbol izquierdo en preOrder.
+    3. Recorrer el subárbol derecho en preOrder.
+
+- Recorrido posOrder:
+El árbol no debe estar vacío. Hay que realizar las siguientes operaciones RECURSIVAMENTE:
+    1. Recorre el subárbol izquierdo en posOrder.
+    2. Recorrer el subárbol derecho en posOrder.
+    3. Examina la raíz.
+
+- Eliminar un nodo de un árbol
+    1. Buscar en el árbol la posición del nodo.
+    2. Si el nodo tiene menos de dos hijos, reajustar los enlaces del antecesor.
+    3. Si tiene dos hijos, subir a esa posición el dato más próximo de sus subárboles. Esto es para mantener la
+    estructura del árbol.
+
+------------------------------------------------------------------------------------------------------------------------
+GRAFOS
+Un grafo es una representación de un grupo de objetos conectados donde algunos pares están conectados por aristas.
+Es un conjunto de objetos llamados vértices o nodos unidos por enlaces llamados aristas o arcos, que permiten
+representar relaciones binarias entre elementos de un conjunto.
+
+Un grafo {G} es un par ordenado {G=(V,E)}, donde:
+- {V} es un conjunto de vértices o nodos, y
+- {E} es un conjunto de aristas o arcos, que relacionan estos nodos.
+- {E} se encuentra incluido en V x V.
+- Normalmente {V} suele ser finito.
+
+- Grafo no dirigido.
+Es un grafo en donde las aristas no tienen dirección.
+
+- Grafo dirigido.
+Es un grafo en donde las aristas tienen dirección.
+
+● Orden: Se llama orden del grafo G a su número de vértices V.
+● Grado: El grado de un vértice o nodo V es igual al número de arcos que lo tienen como
+extremo.
+● Nodos adyacentes: Vértices conectados por una arista.
+● Aristas/Arcos adyacentes: Aristas/Arcos con un nodo en común.
+● Bucle: es una arista que relaciona al mismo nodo; es decir, una arista donde el nodo
+inicial y el nodo final coinciden.
+● Camino: Sucesión de arcos adyacentes tal que el vértice final de cada arco coincide con
+el inicial del siguiente.
+● Circuito: Camino que empieza y acaba en el mismo vértice.
+
+- Matriz de adyacencia: permite saber si existe una arista del nodo i al nodo j (digrafos), o ENTRE esos nodos (grafo).
+- Matriz de pesos
