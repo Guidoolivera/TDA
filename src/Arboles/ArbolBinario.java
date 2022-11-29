@@ -1,8 +1,10 @@
 package Arboles;
 
+import Colas.Cola;
+
 public class ArbolBinario {
 
-    NodoArbol raiz;
+    public NodoArbol raiz;
 
     public ArbolBinario() {
         raiz = null;
@@ -123,8 +125,7 @@ public class ArbolBinario {
             } else if (esHijoIzq) {
                 padre.der = aux.der;
             } else {
-                padre.izq = aux.der
-                ;
+                padre.izq = aux.der;
             }
         } else {
             NodoArbol reemplazo = obtenerReemplazo(aux);
@@ -157,4 +158,30 @@ public class ArbolBinario {
         System.out.println("El nodo reemplazo es: " + reemplazo);
         return reemplazo;
     }
+
+    public String recorrerEnAnchura(NodoArbol nodo){
+        ColaBFS cola = new ColaBFS();
+        cola.encolar(nodo);
+        String aux2 = "";
+        while (!cola.estaVacia()){
+            NodoArbol aux = cola.desencolar();
+            aux2 += aux.dato + "\n";
+            //System.out.println(aux.dato + " ");
+
+            if (aux.izq != null){
+                cola.encolar(aux.izq);
+            }
+
+            if(aux.der != null){
+                cola.encolar(aux.der);
+            }
+
+        }
+        return aux2;
+    }
+
+    public String imprimirEnAnchura(){
+        return recorrerEnAnchura(this.raiz);
+    }
+
 }

@@ -1,6 +1,7 @@
 package Arboles;
 
 import javax.swing.*;
+import java.text.MessageFormat;
 
 public class Main {
     public static void main(String[] args) {
@@ -19,7 +20,8 @@ public class Main {
                                 "4: Recorrer en posOrder.\n" +
                                 "5: Buscar nodo en el árbol.\n" +
                                 "6: Eliminar un nodo del arbol.\n" +
-                                "7: Salir.\n" +
+                                "7: Recorrer en anchura.\n" +
+                                "8: Salir.\n" +
                                 "Elige una opción...", "MENÜ", JOptionPane.QUESTION_MESSAGE));
                 switch (opcion) {
                     case 1:
@@ -90,6 +92,16 @@ public class Main {
                         }
                         break;
                     case 7:
+                        if (!arbol.estaVacio()){
+                            JOptionPane.showMessageDialog(null, "Recorriendo en anchura \n" + arbol.imprimirEnAnchura(),
+                                    "BFS", JOptionPane.INFORMATION_MESSAGE);
+                        }
+                        else {
+                            JOptionPane.showMessageDialog(null, "El árbol está vacío, no se puede buscar.",
+                                    "ERROR", JOptionPane.INFORMATION_MESSAGE);
+                        }
+                        break;
+                    case 8:
                         JOptionPane.showMessageDialog(null, "Aplicación finalizada", "FIN", JOptionPane.INFORMATION_MESSAGE);
                         break;
                     default:
@@ -99,6 +111,6 @@ public class Main {
                 JOptionPane.showMessageDialog(null, "Error: " + n.getMessage());
             }
 
-        } while (opcion != 7);
+        } while (opcion != 8);
     }
 }

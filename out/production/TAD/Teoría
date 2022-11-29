@@ -140,3 +140,15 @@ el inicial del siguiente.
 
 - Matriz de adyacencia: permite saber si existe una arista del nodo i al nodo j (digrafos), o ENTRE esos nodos (grafo).
 - Matriz de pesos
+
+
+BFS - Breadth First Search o Busqueda en Anchura
+Su principio es expandir el nodo menos profundo que NO haya sido expandido.
+1- Crear una lista con un solo elemento, consistente en una trayectoria o camino de longitud cero: el nodo raíz.
+2- Hasta que el primer camino de la lista llegue al nodo objetivo o se llegue a la lista vacía, hacer:
+    a- Extraer el primer camino de la lista.
+    b- Expandir el nodo final de este camino a todos los vecinos del nodo terminal.
+    c- Eliminar los ciclos de los caminos expandidos.
+    d- Insertar estos nuevos caminos al final de la lista.
+3- Finalizar HASTA.
+4- Si se halla el nodo buscado, notificar éxito, sino, el fracaso.
