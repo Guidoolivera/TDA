@@ -10,7 +10,7 @@ public class GrafoNoDirigido {
     private LinkedList<VerticeNoDirigido> verticesND;
     private int numAristas;
 
-    public GrafoNoDirigido(String[] vertices) {
+    public GrafoNoDirigido(String[] vertices){
         this.vertices = vertices;
         this.matrizPesos = new int[vertices.length][vertices.length];
         this.matrizPesos2 = new int[vertices.length][vertices.length];
@@ -59,22 +59,22 @@ public class GrafoNoDirigido {
         this.numAristas = numAristas;
     }
 
-    public void conectar(String vertice1, String vertice2) {
+    public void conectar(String vertice1, String vertice2){
 
-        if (estanIncluidos(vertice1, vertice2)) {
+        if(estanIncluidos(vertice1,vertice2)){
 
-            if (estanConectados(vertice1, vertice2) == 1 || (estanConectados(vertice1, vertice2) == 0)) {
-                if (estanConectados(vertice1, vertice2) == 1) {
-                    for (int i = 0; i < vertices.length; i++) {
-                        for (int j = 0; j < vertices.length; j++) {
-                            if (vertices[i].equals(vertice1) && vertices[j].equals(vertice2)) {
+            if(estanConectados(vertice1,vertice2) == 1 || (estanConectados(vertice1,vertice2) == 0)){
+                if(estanConectados(vertice1,vertice2) == 1){
+                    for(int i=0; i < vertices.length ; i++){
+                        for (int j=0; j < vertices.length; j++){
+                            if(vertices[i].equals(vertice1) && vertices[j].equals(vertice2)){
                                 matrizPesos[i][j] = 2;
-                            } else if (vertices[j].equals(vertice1) && vertices[i].equals(vertice2)) {
+                            }else if(vertices[j].equals(vertice1) && vertices[i].equals(vertice2)){
                                 matrizPesos[i][j] = 2;
                             }
                         }
                     }
-                } else {
+                }else{
                     for (int i = 0; i < vertices.length; i++) {
                         for (int j = 0; j < vertices.length; j++) {
                             if (vertices[i].equals(vertice1) && vertices[j].equals(vertice2)) {
@@ -86,19 +86,19 @@ public class GrafoNoDirigido {
                     }
                 }
 
-                aristas.add(new AristaNoDirigida(numAristas, vertice1, vertice2));
+                aristas.add(new AristaNoDirigida(numAristas,vertice1,vertice2));
                 numAristas++;
 
-                if (noExiste(vertice1) && noExiste(vertice2)) {
+                if(noExiste(vertice1) && noExiste(vertice2)){
                     verticesND.add(new VerticeNoDirigido(vertice1));
                     verticesND.add(new VerticeNoDirigido(vertice2));
-                } else if (noExiste(vertice1) && !noExiste(vertice2)) {
+                }else if(noExiste(vertice1) && !noExiste(vertice2)){
                     verticesND.add(new VerticeNoDirigido(vertice1));
-                } else if (!noExiste(vertice1) && noExiste(vertice2)) {
+                }else if(!noExiste(vertice1) && noExiste(vertice2)){
                     verticesND.add(new VerticeNoDirigido(vertice2));
                 }
 
-                if (estanConectados(vertice1, vertice2) == 1) {
+                if(estanConectados(vertice1,vertice2) == 1) {
                     for (VerticeNoDirigido vertice : verticesND) {
                         if (vertice.getValor().equals(vertice1)) {
                             vertice.añadirAdyacente(vertice2);
@@ -107,33 +107,33 @@ public class GrafoNoDirigido {
                         }
                     }
                 }
-            } else {
+            }else {
                 System.out.println("Los Vertices tienen el maximo de conexiones: 2");
             }
 
-        } else {
+        }else{
             System.out.println("Error en el ingreso de datos");
         }
 
     }
 
-    public void conectar(String vertice1, String vertice2, int peso) {
+    public void conectar(String vertice1, String vertice2,int peso){
 
-        if (estanIncluidos(vertice1, vertice2) && peso > 0) {
+        if(estanIncluidos(vertice1,vertice2) && peso > 0){
 
-            if (estanConectados(vertice1, vertice2) == 1 || (estanConectados(vertice1, vertice2) == 0)) {
+            if(estanConectados(vertice1,vertice2) == 1 || (estanConectados(vertice1,vertice2) == 0)){
 
-                if (estanConectados(vertice1, vertice2) == 0) {
-                    for (int i = 0; i < vertices.length; i++) {
-                        for (int j = 0; j < vertices.length; j++) {
-                            if (vertices[i].equals(vertice1) && vertices[j].equals(vertice2)) {
+                if(estanConectados(vertice1,vertice2) == 0){
+                    for(int i=0; i < vertices.length ; i++){
+                        for (int j=0; j < vertices.length; j++){
+                            if(vertices[i].equals(vertice1) && vertices[j].equals(vertice2)){
                                 matrizPesos[i][j] = peso;
-                            } else if (vertices[j].equals(vertice1) && vertices[i].equals(vertice2)) {
+                            }else if(vertices[j].equals(vertice1) && vertices[i].equals(vertice2)){
                                 matrizPesos[i][j] = peso;
                             }
                         }
                     }
-                } else {
+                }else{
                     for (int i = 0; i < vertices.length; i++) {
                         for (int j = 0; j < vertices.length; j++) {
                             if (vertices[i].equals(vertice1) && vertices[j].equals(vertice2)) {
@@ -145,60 +145,62 @@ public class GrafoNoDirigido {
                     }
                 }
 
-                aristas.add(new AristaNoDirigida(peso, vertice1, vertice2));
+                aristas.add(new AristaNoDirigida(peso,vertice1,vertice2));
                 numAristas++;
 
-                if (noExiste(vertice1) && noExiste(vertice2)) {
+                if(noExiste(vertice1) && noExiste(vertice2)){
                     verticesND.add(new VerticeNoDirigido(vertice1));
                     verticesND.add(new VerticeNoDirigido(vertice2));
-                } else if (noExiste(vertice1) && !noExiste(vertice2)) {
+                }else if(noExiste(vertice1) && !noExiste(vertice2)){
                     verticesND.add(new VerticeNoDirigido(vertice1));
-                } else if (!noExiste(vertice1) && noExiste(vertice2)) {
+                }else if(!noExiste(vertice1) && noExiste(vertice2)){
                     verticesND.add(new VerticeNoDirigido(vertice2));
                 }
 
-                if (estanConectados(vertice1, vertice2) == 1) {
+                if(estanConectados(vertice1,vertice2)  == 1) {
                     for (VerticeNoDirigido vertice : verticesND) {
                         if (vertice.getValor().equals(vertice1)) {
                             vertice.añadirAdyacente(vertice2);
-                        } else if (vertice.getValor().equals(vertice2)) {
+                        } else if(vertice.getValor().equals(vertice2)) {
                             vertice.añadirAdyacente(vertice1);
                         }
                     }
                 }
 
-            } else {
+            }else {
                 System.out.println("Los Vertices tienen el maximo de conexiones: 2");
             }
 
-        } else {
+        }else{
             System.out.println("Error en el ingreso de datos");
         }
 
     }
 
-    public void eliminarConexion(String vertice1, String vertice2) {
+    public void eliminarConexion(String vertice1,String vertice2){
 
-        if (estanIncluidos(vertice1, vertice2)) {
+        if(estanIncluidos(vertice1,vertice2)){
 
-            if (estanConectados(vertice1, vertice2) != 0) {
+            if(estanConectados(vertice1, vertice2) != 0) {
 
-                int valorArista = aristaQueLosUne(vertice1, vertice2);
+                int valorArista = aristaQueLosUne(vertice1,vertice2);
 
                 for (int i = 0; i < vertices.length; i++) {
                     for (int j = 0; j < vertices.length; j++) {
                         if (vertices[i].equals(vertice1) && vertices[j].equals(vertice2)) {
-                            if (matrizPesos[i][j] == valorArista) {
+                            if(matrizPesos[i][j] == valorArista) {
                                 matrizPesos[i][j] = 0;
-                            } else if (matrizPesos2[i][j] == valorArista) {
+                            }else if(matrizPesos2[i][j] == valorArista){
                                 matrizPesos2[i][j] = 0;
                             }
+                            matrizPesos[i][j] -=  1;
                         } else if (vertices[j].equals(vertice1) && vertices[i].equals(vertice2)) {
-                            if (matrizPesos[i][j] == valorArista) {
+                            if(matrizPesos[i][j] == valorArista) {
                                 matrizPesos[i][j] = 0;
-                            } else if (matrizPesos2[i][j] == valorArista) {
+                            }else if(matrizPesos2[i][j] == valorArista){
                                 matrizPesos2[i][j] = 0;
                             }
+                            matrizPesos[i][j] -= 1;
                         }
                     }
                 }
@@ -212,49 +214,49 @@ public class GrafoNoDirigido {
                     }
                 }
 
-            } else {
+            }else{
                 System.out.println("Los Vertices no tienen conexion");
             }
 
-        } else {
+        }else{
             System.out.println("Error en los vertices");
         }
     }
 
-    public void modificarPeso(String vertice1, String vertice2, int peso) {
+    public void modificarPeso(String vertice1,String vertice2,int peso){
 
-        if (estanIncluidos(vertice1, vertice2)) {
+        if(estanIncluidos(vertice1,vertice2)){
 
-            for (AristaNoDirigida arista : aristas) {
-                if (arista.getConexion()[0].equals(vertice1) && arista.getConexion()[1].equals(vertice2)) {
+            for (AristaNoDirigida arista:aristas) {
+                if(arista.getConexion()[0].equals(vertice1) && arista.getConexion()[1].equals(vertice2)){
                     arista.setValor(peso);
                 }
             }
 
-            for (int i = 0; i < vertices.length; i++) {
-                for (int j = 0; j < vertices.length; j++) {
-                    if (vertices[i].equals(vertice1) && vertices[j].equals(vertice2)) {
+            for(int i=0; i < vertices.length ; i++){
+                for (int j=0; j < vertices.length; j++){
+                    if(vertices[i].equals(vertice1) && vertices[j].equals(vertice2)){
                         matrizPesos[i][j] = peso;
-                    } else if (vertices[j].equals(vertice1) && vertices[i].equals(vertice2)) {
+                    }else if(vertices[j].equals(vertice1) && vertices[i].equals(vertice2)){
                         matrizPesos[j][i] = peso;
                     }
                 }
             }
 
-        } else {
+        }else{
             System.out.println("Error en los vertices");
         }
     }
 
-    public void conocerConexion(String vertice1, String vertice2) {
+    public void conocerConexion(String vertice1,String vertice2){
         boolean conectados = false;
 
-        if (estanIncluidos(vertice1, vertice2)) {
+        if(estanIncluidos(vertice1,vertice2)){
 
-            for (int i = 0; i < vertices.length; i++) {
-                for (int j = 0; j < vertices.length; j++) {
-                    if (vertices[i].equals(vertice1) && vertices[j].equals(vertice2)) {
-                        if (matrizPesos[i][j] > 0 && matrizPesos[j][i] > 0) {
+            for(int i=0; i < vertices.length ; i++){
+                for (int j=0; j < vertices.length; j++){
+                    if(vertices[i].equals(vertice1) && vertices[j].equals(vertice2)){
+                        if(matrizPesos[i][j] > 0 && matrizPesos[j][i] > 0){
                             System.out.println("Los Vertices estan conectados");
                             conectados = true;
                         }
@@ -262,22 +264,22 @@ public class GrafoNoDirigido {
                 }
             }
 
-            if (!conectados) {
+            if(!conectados){
                 System.out.println("Los Vertices no estan conectados");
             }
 
-        } else {
+        }else{
             System.out.println("Error en el ingreso de datos");
         }
     }
 
-    private int estanConectados(String vertice1, String vertice2) {
+    private int estanConectados(String vertice1,String vertice2){
         int num = 0;
 
-        for (AristaNoDirigida arista : aristas) {
-            if (arista.getConexion()[0].equals(vertice1) && arista.getConexion()[1].equals(vertice2)) {
+        for (AristaNoDirigida arista:aristas){
+            if(arista.getConexion()[0].equals(vertice1) && arista.getConexion()[1].equals(vertice2)){
                 num++;
-            } else if (arista.getConexion()[0].equals(vertice2) && arista.getConexion()[1].equals(vertice1)) {
+            }else if(arista.getConexion()[0].equals(vertice2) && arista.getConexion()[1].equals(vertice1)){
                 num++;
             }
         }
@@ -285,13 +287,13 @@ public class GrafoNoDirigido {
         return num;
     }
 
-    private boolean estanIncluidos(String vertice1, String vertice2) {
+    private boolean estanIncluidos(String vertice1,String vertice2){
         int num = 0;
 
-        for (int i = 0; i < vertices.length; i++) {
-            if (vertices[i].equals(vertice1)) {
+        for (int i=0; i < vertices.length; i++){
+            if(vertices[i].equals(vertice1)){
                 num++;
-            } else if (vertices[i].equals(vertice2)) {
+            }else if(vertices[i].equals(vertice2)){
                 num++;
             }
         }
@@ -299,36 +301,37 @@ public class GrafoNoDirigido {
         return num == 2;
     }
 
-    private boolean noExiste(String vertice) {
+    private boolean noExiste(String vertice){
         int num = 0;
 
-        for (VerticeNoDirigido verticeD : verticesND) {
-            if (vertice.equals(verticeD.getValor())) {
+        for (VerticeNoDirigido verticeD: verticesND) {
+            if(vertice.equals(verticeD.getValor())){
                 num++;
             }
         }
 
-        return num == 0;
+        return num==0;
     }
 
-    public void imprimirMatriz() {
-        Object[][] matrizCompleta = new Object[(vertices.length + 1)][(vertices.length + 1)];
+    public void imprimirMatriz(){
+        Object[][] matrizCompleta = new Object[(vertices.length+1)][(vertices.length+1)];
 
 
-        for (int i = 0; i < (vertices.length + 1); i++) {
-            for (int j = 0; j < (vertices.length + 1); j++) {
-                if (i == 0 && j != 0) {
-                    matrizCompleta[i][j] = vertices[j - 1] + "\t";
-                } else if (i != 0 && j == 0) {
-                    matrizCompleta[i][j] = vertices[i - 1] + "\t";
-                } else if (i == 0 && j == 0) {
+        for (int i = 0; i < (vertices.length+1) ; i++){
+            for (int j = 0; j < (vertices.length + 1); j++){
+                if(i == 0 && j != 0){
+                    matrizCompleta[i][j] = vertices[j-1] + "\t";
+                }else if(i != 0 && j == 0){
+                    matrizCompleta[i][j] = vertices[i-1] + "\t";
+                }else if(i == 0 && j == 0){
                     matrizCompleta[i][j] = "\t";
-                } else {
-                    if (matrizPesos2[i - 1][j - 1] == 0) {
+                }else{
+                    if(matrizPesos2[i-1][j-1] == 0) {
                         matrizCompleta[i][j] = matrizPesos[i - 1][j - 1] + "\t";
-                    } else if (matrizPesos[i - 1][j - 1] == 0) {
+                    }else if(matrizPesos[i-1][j-1] == 0){
                         matrizCompleta[i][j] = matrizPesos2[i - 1][j - 1] + "\t";
-                    } else {
+                    }
+                    else{
                         matrizCompleta[i][j] = matrizPesos[i - 1][j - 1] + "-" + matrizPesos2[i - 1][j - 1] + "\t";
                     }
                 }
@@ -338,21 +341,21 @@ public class GrafoNoDirigido {
         }
     }
 
-    public void imprimirParesAdyacencia() {
-        for (AristaNoDirigida arista : aristas) {
+    public void imprimirParesAdyacencia(){
+        for (AristaNoDirigida arista:aristas){
             System.out.println(arista);
         }
     }
 
-    public void imprimirListaDeAdyacencia() {
-        for (VerticeNoDirigido vertice : verticesND) {
+    public void imprimirListaDeAdyacencia(){
+        for (VerticeNoDirigido vertice: verticesND){
             System.out.println(vertice);
         }
     }
 
-    public LinkedList<String> obtenerNodosAdyacentes(String vertice) {
-        for (VerticeNoDirigido verticeND : verticesND) {
-            if (verticeND.getValor().equals(vertice)) {
+    public LinkedList<String> obtenerNodosAdyacentes(String vertice){
+        for (VerticeNoDirigido verticeND: verticesND) {
+            if(verticeND.getValor().equals(vertice)){
                 return verticeND.getAdyacentes();
             }
         }
@@ -360,9 +363,9 @@ public class GrafoNoDirigido {
         return null;
     }
 
-    private int aristaQueLosUne(String vertice1, String vertice2) {
-        for (AristaNoDirigida arista : aristas) {
-            if (arista.getConexion()[0].equals(vertice1) && arista.getConexion()[1].equals(vertice2)) {
+    private int aristaQueLosUne(String vertice1,String vertice2){
+        for (AristaNoDirigida arista:aristas) {
+            if(arista.getConexion()[0].equals(vertice1) && arista.getConexion()[1].equals(vertice2)){
                 return arista.getValor();
             }
         }
