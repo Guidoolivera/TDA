@@ -1,4 +1,4 @@
-package Grafos;
+package Grafos.GrafosCaminosMinimos;
 
 public class Main {
     public static void main(String[] args) {

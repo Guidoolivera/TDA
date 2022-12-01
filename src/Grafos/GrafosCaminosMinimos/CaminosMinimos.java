@@ -1,4 +1,4 @@
-package Grafos;
+package Grafos.GrafosCaminosMinimos;
 
 public class CaminosMinimos {
     //Método para determinar todos los caminos.

@@ -85,6 +85,8 @@ Un árbol es una estructura recursiva. Cada nodo es la raíz de su propio subár
 
 - Estrucura: Tiene sus respectivos punteros hijos izquierdo y derecho, y en medio el dato.
 
+
+
 - Recorrido inOrden:
 El arbol no debe estar vacío. Hay que realizar las siguientes operaciones RECURSIVAMENTE:
     1. Recorrer el subárbol izquierdo inOrder.
@@ -102,6 +104,10 @@ El árbol no debe estar vacío. Hay que realizar las siguientes operaciones RECU
     1. Recorre el subárbol izquierdo en posOrder.
     2. Recorrer el subárbol derecho en posOrder.
     3. Examina la raíz.
+
+** El nombre de cada recorrido está dado por el momento del proceso recursivo en el que se obtiene el valor de la raiz.
+
+
 
 - Eliminar un nodo de un árbol
     1. Buscar en el árbol la posición del nodo.
@@ -152,3 +158,53 @@ Su principio es expandir el nodo menos profundo que NO haya sido expandido.
     d- Insertar estos nuevos caminos al final de la lista.
 3- Finalizar HASTA.
 4- Si se halla el nodo buscado, notificar éxito, sino, el fracaso.
+
+
+Para representar un grafo lo puedo hacer de TRES formas:
+
+-Pares de adyacencia:
+Lista de pares, donde cada par representa una arista. Se representa usando un arreglo, donde cada posición corresponde
+a una arista que une un par de vértices.
+
+-Matriz de adyacencia
+El problema sigue siendo el crecimiento del grafo.
+Permite representar grafos ponderados.
+NO permite representar un multigrafos.
+
+-Lista de adyacencia.
+Una lista con |V| elementos, donde el elemento nro i tiene la lista de nodos adyacentes al nodo i.
+Para cada nodo de |V| se tiene una lista de aristas que parten de ese nodo.
+Las listas se guardan en un array de nodos cabecera.
+Si el grafo no es dirigido, entonces cada arista se representa dos veces.
+
+
+
+///////////////////////
+La recursividad es la propiedad de los procedimientos y funciones de llamarse a sí mismos para resolver un problema
+determinado. Permite evitar implementar explícitamente estructuras iterativas, de manera que se describa un número
+finito de cálculos a través de un programa recursivo.
+-        Se controla la repetición de tareas de manera interna.
+-        Se realizan las operaciones, y al finalizar se evalúa una condición de salida (o CASO BASE, para que no se dé
+ un bucle infinito), si no se cumplió, se vuelve a ejecutar el mismo conjunto de operaciones.
+-        Generalmente es lenta, y ocupa un gran espacio en memoria ya que debe almacenar los datos en forma de pila, y
+ luego debe poder desapilarlos.
+
+
+
+Una Tabla Hash permite realizar estas operaciones de manera más rápido que una lista simple ya que sólo se necesita
+saber la llave o clave del campo para acceder a sus datos de manera directa. En cambio, las listas simples deben ser
+recorridas hasta que un valor buscado coincida con el solicitado.
+
+
+
+El backtracking es una técnica y/o algoritmo que nos permite “volver por el camino” de manera que podamos recorrer la
+totalidad de una estructura, guardando temporalmente el recorrido realizado.
+
+ Es utilizado generalmente en grafos y árboles, permite recorrer todos los nodos de un grafo o árbol de manera ordenada,
+  pero no uniforme. Funciona de manera tal que expande cada uno de los nodos que va localizando, de forma recurrente y
+  en un camino concreto. Una vez que se hayan visitado todos los nodos de un camino, regresa y repite el mismo proceso
+   con cada uno de los hermanos del nodo que ya se ha procesado.
+
+En el caso de los árboles se podría reemplazar, por ejemplo, por un algoritmo de búsqueda en anchura. Este realiza un
+tipo de búsqueda sin información, ya que no utiliza ninguna heurística. Se elige un nodo como raíz y se exploran sus
+nodos vecinos. A continuación cada nodo explora sus vecinos adyacentes, y así hasta recorrer todo el grafo.

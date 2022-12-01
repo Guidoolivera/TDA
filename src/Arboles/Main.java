@@ -93,8 +93,9 @@ public class Main {
                         break;
                     case 7:
                         if (!arbol.estaVacio()){
-                            JOptionPane.showMessageDialog(null, "Recorriendo en anchura \n" + arbol.imprimirEnAnchura(),
+                            JOptionPane.showMessageDialog(null, "Recorriendo en anchura \n",
                                     "BFS", JOptionPane.INFORMATION_MESSAGE);
+                            System.out.println(arbol.imprimirEnAnchura());
                         }
                         else {
                             JOptionPane.showMessageDialog(null, "El árbol está vacío, no se puede buscar.",

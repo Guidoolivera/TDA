@@ -1,7 +1,5 @@
 package Arboles;
 
-import Colas.Cola;
-
 public class ArbolBinario {
 
     public NodoArbol raiz;
@@ -157,6 +155,10 @@ public class ArbolBinario {
         }
         System.out.println("El nodo reemplazo es: " + reemplazo);
         return reemplazo;
+    }
+
+    public boolean esHoja(NodoArbol hoja){
+        return (hoja.izq == null && hoja.der == null);
     }
 
     public String recorrerEnAnchura(NodoArbol nodo){

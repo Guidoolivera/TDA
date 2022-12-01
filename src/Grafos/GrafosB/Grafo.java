@@ -1,4 +1,4 @@
-package GrafosB;
+package Grafos.GrafosB;
 
 import java.util.LinkedList;
 
